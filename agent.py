@@ -5,7 +5,7 @@ import json
 import os
 
 # --- Twój pełny token bota ---
-TELEGRAM_TOKEN = "TWÓJ_PELNY_TOKEN_TUTAJ"
+TELEGRAM_TOKEN = "8590798509:AAFYXHCEbsSTTZgt4TrcA3peL9UhstF33wg"
 CHAT_ID = None
 
 # --- RSS źródła ---
