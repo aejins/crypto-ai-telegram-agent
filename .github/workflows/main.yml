@@ -2,16 +2,31 @@ name: Crypto AI Agent
 
 on:
   schedule:
-    - cron: "0 8 * * *"
-  workflow_dispatch:
+    # codziennie o 8:00 UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch: # pozwala ręcznie uruchomić
 
 jobs:
-  run:
+  run-agent:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      # 1️⃣ Klon repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Zainstaluj Pythona
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
-      - run: pip install requests feedparser
-      - run: python agent.py
+          python-version: '3.11'
+
+      # 3️⃣ Zainstaluj wymagane biblioteki
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests feedparser
+
+      # 4️⃣ Uruchom agenta
+      - name: Run Crypto AI Agent
+        run: |
+          python agent.py
